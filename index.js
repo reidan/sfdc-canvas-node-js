@@ -49,7 +49,7 @@ app.post('/canvas', function(request, response)  {
     	response.status( 500 );
     } else {
     	var signedRequest = encBase64.parse( signedHashedBase64 );
-  		response.send( JSON.parse( cryptoJS.enc.Latin1.stringify( signedRequest ) ) );
+  		response.send( '<html><body><h1>Success!</h1><p>' + JSON.parse( cryptoJS.enc.Latin1.stringify( signedRequest ) ) '</p></body></html>' );
     }
 });
 
