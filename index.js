@@ -50,7 +50,7 @@ app.post('/canvas', function(request, response)  {
     } else {
     	var signedRequest = encBase64.parse( signedHashedBase64 );
     	var responseBody = '<html><body><h1>Success!</h1><p>';
-    	responseBody += JSON.parse( cryptoJS.enc.Latin1.stringify( signedRequest ) );
+    	responseBody += JSON.stringify( JSON.parse( cryptoJS.enc.Latin1.stringify( signedRequest ) ) );
     	responseBody += '</p></body></html>';
     }
   		response.send( responseBody );
