@@ -36,7 +36,7 @@ app.post('/canvas', function(request, response)  {
     var index = signedReq.indexOf( '.' );
     console.log( index );
     var hashedBase64 = signedReq.substring(0, index);
-    var signedHashedBase64 = signedReq.substring(index + 1, signedReq.length());
+    var signedHashedBase64 = signedReq.substring(index + 1, signedReq.length);
 
 
     //$calcedSig = base64_encode(hash_hmac("sha256", $encodedEnv, $consumer_secret, true));	
