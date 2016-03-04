@@ -1,4 +1,5 @@
 var express = require('express');
+var cryptoJS = require('crypto-js');
 var hmacSHA256 = require('crypto-js/hmac-sha256');
 var encBase64 = require('crypto-js/enc-base64');
 var app = express();
