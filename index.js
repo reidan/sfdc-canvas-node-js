@@ -28,13 +28,15 @@ app.post('/canvas', function(request, response)  {
 
     // Receive the POST message that contains the initial signed request from Salesforce. DONE!
     // Split the signed request on the first period. The result is two strings: the hashed Based64 context signed with the consumer secret and the Base64 encoded context itself.
-    console.log( request );
-    console.log( request.body );
+    // console.log( request );
+    // console.log( request.body );
+    console.log( request.body.signed_request );
     var reqBody = request.body;
-    var index = reqBody.indexOf( '.' );
+    var signedReq = reqBody.signed_request;
+    var index = signedReq.indexOf( '.' );
     console.log( index );
-    var hashedBase64 = reqBody.substring(0, index);
-    var signedHashedBase64 = reqBody.substring(index + 1, reqBody.length());
+    var hashedBase64 = signedReq.substring(0, index);
+    var signedHashedBase64 = signedReq.substring(index + 1, signedReq.length());
 
 
     //$calcedSig = base64_encode(hash_hmac("sha256", $encodedEnv, $consumer_secret, true));	
