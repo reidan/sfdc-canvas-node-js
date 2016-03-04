@@ -43,12 +43,12 @@ app.post('/canvas', function(request, response)  {
     // Use the HMAC SHA-256 algorithm to hash the Base64 encoded context and sign it using your consumer secret.
     var hash = hmacSHA256( signedHashedBase64, process.env.CONSUMER_SECRET );
     // Base64 encode the string created in the previous step.
-    var encodedHash = encBase64.encode( hash );
+    var encodedHash = encBase64.stringify( hash );
     // Compare the Base64 encoded string with the hashed Base64 context signed with the consumer secret you received in step 2.
     if( encodedHash !== hashedBase64 ) {
     	response.status( 500 );
     } else {
-    	var signedRequest = encBase64.decode( signedHashedBase64 );
+    	var signedRequest = encBase64.parse( signedHashedBase64 );
   		response.send( signedRequest );
     }
 });
