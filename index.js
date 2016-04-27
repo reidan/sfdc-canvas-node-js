@@ -47,18 +47,18 @@ app.post('/canvas', function(request, response)  {
     var signedRequest = encBase64.parse( signedHashedBase64 );
     var reqJSON = JSON.parse( cryptoJS.enc.Latin1.stringify( signedRequest ) );
     console.log( reqJSON );
-    console.log( reqJSON.user );
-    console.log( reqJSON.User );
+    console.log( reqJSON.client.instanceUrl );
+    // console.log( reqJSON.User );
     // var location = '';
-    // var location = reqJSON.user.siteUrl;
+    var instanceUrl = reqJSON.client.instanceUrl;
     // Compare the Base64 encoded string with the hashed Base64 context signed with the consumer secret you received in step 2.
     if( encodedHash !== hashedBase64 ) {
         response.status( 500 );
     } else {
     	var responseBody = '<html><head>';
-        // responseBody += '<script type="text/javascript" src="' + siteUrl + '.salesforce.com/canvas/sdk/js/36.0/canvas-all.js"></script>';
+        responseBody += '<script type="text/javascript" src="' + instanceUrl + '/canvas/sdk/js/36.0/canvas-all.js"></script>';
         responseBody += '</head><body><h1>Success!</h1><p>';
-    	responseBody += JSON.stringify( JSON.parse( reqJSON ) );
+    	responseBody += JSON.stringify( reqJSON );
     	responseBody += '</p></body></html>';
     }
   		response.send( responseBody );
