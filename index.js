@@ -58,7 +58,7 @@ app.post('/canvas', function(request, response)  {
     	var responseBody = '<html><head>';
         responseBody += '<script type="text/javascript" src="' + instanceUrl + '/canvas/sdk/js/36.0/canvas-all.js"></script>';
         responseBody += '<script type="text/javascript">';
-        responseBody += '   var sr = JSON.parse("' + JSON.stringify( reqJSON ) + '")';
+        responseBody += '   var sr = JSON.parse(\'' + JSON.stringify( reqJSON ) + '\');';
         responseBody += '   console.log( "Received Valid SR" );';
         responseBody += '   console.log( sr );';
         responseBody += '</script>';
