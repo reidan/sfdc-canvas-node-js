@@ -44,7 +44,7 @@ app.post('/canvas', function(request, response)  {
     var hash = hmacSHA256( signedHashedBase64, process.env.CONSUMER_SECRET );
     // Base64 encode the string created in the previous step.
     var encodedHash = encBase64.stringify( hash );
-    var reqJSON = JSON.parse( cryptoJS.enc.Latin1.stringify( signedRequest ); )
+    var reqJSON = JSON.parse( cryptoJS.enc.Latin1.stringify( signedRequest ) );
     var location = reqJSON.user.siteUrl;
     // Compare the Base64 encoded string with the hashed Base64 context signed with the consumer secret you received in step 2.
     if( encodedHash !== hashedBase64 ) {
